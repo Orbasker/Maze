@@ -1,0 +1,35 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build mazeGenerator",
+            "command": "make",
+            "args": ["mazeGenerator"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build and Run mazeGenerator",
+            "command": "make",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}

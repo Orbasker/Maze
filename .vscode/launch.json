@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "maze debugger",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/mazeGenerator",
+            "args": ["make run"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+    ]
+}
