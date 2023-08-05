@@ -1,4 +1,8 @@
 #include "maze.hpp"
+Maze::Maze(int width, int height) {
+    mazeWidth = width;
+    mazeHeight = height;
+}
 
 void Maze::addRoom(Room* room) {
     rooms.push_back(room);
@@ -24,3 +28,25 @@ std::ostream& operator<<(std::ostream& os, const Maze& maze) {
     return os;
 }
 
+Room* Maze::getRoom(int roomY, int roomX) const {
+    // Logic to retrieve the room based on roomY and roomX
+    // Make sure to handle out-of-bound coordinates appropriately
+    // For example, check if roomY and roomX are within the maze boundaries
+    // and return nullptr if they are not valid.
+
+    if (roomY >= 0 && roomY < mazeHeight && roomX >= 0 && roomX < mazeWidth) {
+        // Return the room at the specified coordinates
+        return rooms[roomY * mazeWidth + roomX];
+    }
+
+    // Invalid coordinates, return nullptr
+    return nullptr;
+}
+
+
+int Maze::getMazeWidth() const {
+    return mazeWidth;
+}
+int Maze::getMazeHeight() const {
+    return mazeHeight;
+}

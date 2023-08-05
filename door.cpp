@@ -20,7 +20,12 @@ void Door::enter() {
 
 Room* Door::otherSideFrom(Room* room) {
     // Logic to get the other side room from the given room
-    return nullptr; // Replace nullptr with the actual logic to return the other side room
+    if (room == room1) {
+        return room2;
+    } else if (room == room2) {
+        return room1;
+    }
+    return nullptr;
 }
 
 void Door::open() {

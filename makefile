@@ -1,10 +1,11 @@
 CC = g++
-CFLAGS = -g -std=c++11 
+CFLAGS = -g -std=c++11
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 OBJS = mazeGenerator.o mazeGame.o mazeFactory.o maze.o room.o door.o
 
 mazeGenerator: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o mazeGenerator
+	$(CC) $(OBJS) -o mazeGenerator $(LDFLAGS)
 
 mazeGenerator.o: mazeGenerator.cpp
 	$(CC) $(CFLAGS) -c mazeGenerator.cpp
@@ -28,4 +29,4 @@ run: mazeGenerator
 	./mazeGenerator
 
 clean:
-	rm -f *.o mazeGenerator
+	rm -f $(OBJS) mazeGenerator
