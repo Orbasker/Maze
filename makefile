@@ -1,32 +1,39 @@
 CC = g++
 CFLAGS = -g -std=c++11
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-OBJS = mazeGenerator.o mazeGame.o mazeFactory.o maze.o room.o door.o
+INCLUDES = -I.
 
-mazeGenerator: $(OBJS)
-	$(CC) $(OBJS) -o mazeGenerator $(LDFLAGS)
+OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o # Add other object files for other classes if present
 
-mazeGenerator.o: mazeGenerator.cpp
-	$(CC) $(CFLAGS) -c mazeGenerator.cpp
+main: $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o main
 
-mazeGame.o: mazeGame.cpp mazeGame.hpp
-	$(CC) $(CFLAGS) -c mazeGame.cpp
+main.o: main.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c main.cpp
 
-mazeFactory.o: mazeFactory.cpp 
-	$(CC) $(CFLAGS) -c mazeFactory.cpp
+maze2d.o: maze2d.cpp maze2d.h 
+	$(CC) $(CFLAGS) $(INCLUDES) -c maze2d.cpp
 
-maze.o: maze.cpp maze.hpp
-	$(CC) $(CFLAGS) -c maze.cpp
+maze2dGenerator.o: maze2dGenerator.cpp  maze2dGenerator.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c maze2dGenerator.cpp
+Maze2dSearchable.o: Maze2dSearchable.cpp Maze2dSearchable.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Maze2dSearchable.cpp
+SimpleMaze2dGenerator.o: SimpleMaze2dGenerator.cpp SimpleMaze2dGenerator.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c SimpleMaze2dGenerator.cpp
+# BFS.o:  BFS.h
+# 	$(CC) $(CFLAGS) $(INCLUDES) -c BFS.h
 
-room.o: room.cpp room.hpp
-	$(CC) $(CFLAGS) -c room.cpp
+# CommonSearcher.o:  CommonSearcher.h
+# 	$(CC) $(CFLAGS) $(INCLUDES) -c CommonSearcher.h
 
-door.o: door.cpp door.hpp
-	$(CC) $(CFLAGS) -c door.cpp
 
-run: mazeGenerator
-	./mazeGenerator
+# Add compilation rules for other classes if present
+# For example:
+# Searchable.o: Searchable.cpp Searchable.h
+#	$(CC) $(CFLAGS) $(INCLUDES) -c Searchable.cpp
+
+run: main
+	./main
 
 clean:
-	rm -f $(OBJS) mazeGenerator
+	rm -f $(OBJS) main

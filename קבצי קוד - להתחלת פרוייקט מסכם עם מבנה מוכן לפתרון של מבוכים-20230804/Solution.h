@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "State.h"
+#include <memory> // Include the necessary header for unique_ptr
+#include "State.h" // Include the State class header
 
 template <class T>
 class Solution
