@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "State.h"
+#include "State.cpp"
 
 template <class T>
 class Searchable

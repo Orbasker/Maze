@@ -1,4 +1,3 @@
-#pragma once
 #include "SimpleMaze2dGenerator.h"
 #include <cstdlib>  // Include for rand()
 #include <ctime>    // Include for srand()
@@ -8,8 +7,11 @@ Maze2d SimpleMaze2dGenerator::generate() {
     int n = 5;
     int m = 5;
     Maze2d maze(n, m);
+    
 
-    // Seed the random number generator
+    // Seed the random number generator between 0 and 1
+    
+
     srand(static_cast<unsigned int>(time(nullptr)));
 
     // Set all cells as walls
@@ -23,10 +25,11 @@ Maze2d SimpleMaze2dGenerator::generate() {
             }
         }
     }
-
+    
     // Create a path from (0,0) to (n-1,m-1)
-    maze.setCell(0, 0, 0);
-    maze.setCell(n - 1, m - 1, 0);
+    // sign 0 for empty cell(path), 1 for wall, 2 for start point, 3 for end point 
+    maze.setCell(0, 0, 2);
+    maze.setCell(n - 1, m - 1, 3);
 
     return maze;
 }
