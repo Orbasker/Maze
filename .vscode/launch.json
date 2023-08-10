@@ -5,7 +5,7 @@
             "name": "maze debugger",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/mazeGenerator",
+            "program": "${workspaceFolder}/main",
             "args": ["make run"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

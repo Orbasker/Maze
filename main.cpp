@@ -2,15 +2,15 @@
 #include <ctime>
 #include <string>
 #include <vector>
-#include "BFS.h"
 #include "SimpleMaze2dGenerator.h"
 #include <fstream>
-
-
-
-
-
-
+#include "CLI.h"
+#include <sstream>
+#include "demo.h"
+#include "mazeCompression.cpp"
+#include <vector>
+#include "Maze2dSearchable.h"
+#include "SolveMazeCommand.h"
 
 // Test 1: Maze Generation Test
 void testMazeGeneration() {
@@ -34,21 +34,9 @@ void testPathfinding() {
     std::cout << "Generated Maze:" << std::endl;
     maze.print();
 
-    // // Use BFS to find the shortest path in the maze
-    BFS<std::pair<int, int>> bfsSearcher; // Assuming BFS is implemented in BFS.h and inherits from CommonSearcher<std::pair<int, int>>
-    Solution solution = bfsSearcher.search(maze);
-    // Solution<std::pair<int, int>> solution = bfsSearcher.search(maze);
-
-    // // Get the evaluated nodes count
-    int evaluatedNodes = bfsSearcher.getNumberOfNodesEvaluated();
-    std::cout << "Number of nodes evaluated: " << evaluatedNodes << std::endl;
-
-    // // Print the path
-    std::cout << "Shortest Path:" << std::endl;
-    std::vector<State<std::pair<int, int>>*> path = solution.getSolution();
-    for (const auto& state : path) {
-        std::cout << "(" << state->getState().first << ", " << state->getState().second << ") ";
-    }
+    Maze2dSearchable searchableMaze(maze);
+    searchableMaze.BFS();
+    searchableMaze.getSolution()->printSolution();
     std::cout << std::endl;
 }
 
@@ -246,17 +234,80 @@ void testErrorHandling() {
     // Test how the algorithm and the Maze2d class handle unexpected errors or exceptions
 }
 
+class HelloCommand : public Command {
+public:
+    void execute() override {
+        std::cout << "Hello, world!" << std::endl;
+    }
+};
+
+class ByeCommand : public Command {
+public:
+    void execute() override {
+        std::cout << "Goodbye!" << std::endl;
+    }
+};
 int main() {
     testMazeGeneration();
     testPathfinding();
     testBoundary();
     testInputValidation();
-    testPerformance();
+    // testPerformance();
     testConsistency();
     testIntegration();
     testSerialization();
     testMemoryManagement();
     testErrorHandling();
+    Demo demo;
+    demo.run();
+    // Create a maze using Maze2d class (you might have your own way to create the maze)
+    Maze2d originalMaze(5, 5);
+    // ... Set the maze data ...
+    originalMaze.setCell(0, 0, 1); // Setting a cell in the maze
+    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    originalMaze.setCell(0, 3, 1); // Setting a cell in the maze
+    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    originalMaze.setCell(1, 0, 1); // Setting a cell in the maze
+    originalMaze.setCell(1, 1, 0); // Setting a cell in the maze
+    originalMaze.setCell(1, 2, 0); // Setting a cell in the maze
+    //print the maze
+    originalMaze.print();
+    // Save the original maze
+    originalMaze.saveToFile("original_maze.txt");
+
+    // Compress and save the maze
+    MazeCompression::compressAndWriteToFile(originalMaze, "compressed_maze.txt");
+
+    // Load and decompress the maze
+    Maze2d decompressedMaze = MazeCompression::decompressAndReadFromFile("compressed_maze.txt");
+
+    // Compare the decompressed maze with the original
+    if (decompressedMaze == originalMaze) {
+        std::cout << "Decompressed maze matches the original maze." << std::endl;
+        std::cout << "Decompressed maze:" << std::endl;
+        decompressedMaze.print();
+    } else {
+        std::cout << "Decompressed maze does not match the original maze." << std::endl;
+    }
+
+
+    Maze2d hugeMaze(10,10);
+
+    HelloCommand helloCommand;
+    ByeCommand byeCommand;
+    SolveMazeCommand solveMazeCommand(hugeMaze);
+    // Create CLI instance with input from standard input and output to standard output
+    CLI cli(std::cin, std::cout);
+
+    // Add commands to the CLI
+    cli.addCommand("hello", &helloCommand);
+    cli.addCommand("bye", &byeCommand);
+    cli.addCommand("solve", &solveMazeCommand);
+
+    // Start the CLI
+    std::cout << "Enter a command (hello, bye,solve, or exit to teminate the program):" << std::endl;
+    cli.start();
 
     return 0;
 }
