@@ -6,6 +6,6 @@
 
 class Maze2dGenerator {
 public:
-    virtual Maze2d generate() = 0;
+    virtual Maze2d generate(int rows=5, int cols=5) = 0;
     std::string measureAlgorithmTime();
 };

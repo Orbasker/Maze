@@ -1,7 +1,8 @@
 #include "Solution.cpp"
 #include "Maze2dSearchable.h"
 #include "maze2d.h" // Include the necessary header for Maze2d
-
+#ifndef COMMONSEARCHER_H_
+#define COMMONSEARCHER_H_
 // Define CommonSearcher class
 template <class T>
 class CommonSearcher {
@@ -10,7 +11,7 @@ public:
     // Define the CommonSearcher class methods
     virtual Solution<T> search(Maze2dSearchable& maze) = 0; // Pure virtual function
     virtual int getNumberOfNodesEvaluated() = 0; // Pure virtual function
-    virtual void checkEfficiency(const Searchable<T>& s) = 0;
+    virtual void checkEfficiency( Maze2dSearchable& mazing) = 0;
     Solution<T> backtrace(State<T>* goalState) {
         // ... Your backtrace implementation here ...
         Solution<T> solution;
@@ -24,3 +25,6 @@ public:
 
     // ...
 };
+
+
+#endif /* COMMONSEARCHER_H_ */

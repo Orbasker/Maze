@@ -1,10 +1,10 @@
 #include "demo.h"
-#include "Maze2dSearchable.h"
+#include "Model/Maze2dSearchable.h"
 void Demo::run()
 {
   // Create a maze using MyMazeGenerator
   SimpleMaze2dGenerator generator;
-  Maze2d maze = generator.generate();
+  Maze2d maze = generator.generate(10, 10);
 
   // Print the maze
   maze.print();
@@ -14,6 +14,6 @@ void Demo::run()
   Maze2dSearchable mazeSearchable(maze);
   mazeSearchable.BFS();
   mazeSearchable.getSolution()->printSolution();
-  
+
   std::cout << "BFS situations developed: " << mazeSearchable.getSolution()->getNumOfEvaluatedNodes() << std::endl;
 }
