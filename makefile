@@ -3,44 +3,51 @@ CFLAGS = -g -std=c++11
 
 INCLUDES = -I.
 
-OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o # Add other object files for other classes if present
+OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o GenrateMazeCommand.o View.o Model.o Controller.o# Add other object files for other classes if present
 
 main: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o main
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c main.cpp
+main.o: Controller/main.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/main.cpp
 
-maze2d.o: maze2d.cpp maze2d.h 
-	$(CC) $(CFLAGS) $(INCLUDES) -c maze2d.cpp
+maze2d.o: Model/maze2d.cpp Model/maze2d.h 
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/maze2d.cpp
 
-maze2dGenerator.o: maze2dGenerator.cpp  maze2dGenerator.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c maze2dGenerator.cpp
-Maze2dSearchable.o: Maze2dSearchable.cpp Maze2dSearchable.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c Maze2dSearchable.cpp
-SimpleMaze2dGenerator.o: SimpleMaze2dGenerator.cpp SimpleMaze2dGenerator.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c SimpleMaze2dGenerator.cpp
-mazeAdapter.o: mazeAdapter.h mazeAdapter.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c mazeAdapter.cpp
-demo.o: demo.h demo.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c demo.cpp
-mazeCompression.o: mazeCompression.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c mazeCompression.cpp
-command.o: command.cpp 
-	$(CC) $(CFLAGS) $(INCLUDES) -c command.cpp
-CLI.o: CLI.cpp CLI.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c CLI.cpp 
-SolveMazeCommand.o: SolveMazeCommand.cpp SolveMazeCommand.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c SolveMazeCommand.cpp
-BFS.o: BFS.cpp BFS.h
-	$(CC) $(CFLAGS) $(INCLUDES) -c BFS.cpp
-State.o:  State.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c State.cpp
-Solution.o:  Solution.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c Solution.cpp
-CommonSearcher.o:  CommonSearcher.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c CommonSearcher.cpp
-
+maze2dGenerator.o: Model/maze2dGenerator.cpp  Model/maze2dGenerator.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/maze2dGenerator.cpp
+Maze2dSearchable.o: Model/Maze2dSearchable.cpp Model/Maze2dSearchable.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/Maze2dSearchable.cpp
+SimpleMaze2dGenerator.o: Model/SimpleMaze2dGenerator.cpp Model/SimpleMaze2dGenerator.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/SimpleMaze2dGenerator.cpp
+mazeAdapter.o: Model/mazeAdapter.h Model/mazeAdapter.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/mazeAdapter.cpp
+demo.o: View/demo.h View/demo.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c View/demo.cpp
+mazeCompression.o: Model/mazeCompression.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/mazeCompression.cpp
+command.o: Controller/command.cpp 
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/command.cpp
+CLI.o: View/CLI.cpp View/CLI.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c View/CLI.cpp 
+SolveMazeCommand.o: Controller/SolveMazeCommand.cpp Controller/SolveMazeCommand.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/SolveMazeCommand.cpp
+BFS.o: Model/BFS.cpp Model/BFS.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/BFS.cpp
+State.o:  Model/State.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/State.cpp
+Solution.o:  Model/Solution.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/Solution.cpp
+CommonSearcher.o:  Model/CommonSearcher.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model/CommonSearcher.cpp
+GenrateMazeCommand.o: Controller/GenrateMazeCommand.cpp Controller/GenrateMazeCommand.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/GenrateMazeCommand.cpp
+Controller.o: Controller.h Controller.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller.cpp
+Model.o: Model.h Model.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c Model.cpp
+View.o: View.h View.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c View.cpp
 
 # Add compilation rules for other classes if present
 # For example:

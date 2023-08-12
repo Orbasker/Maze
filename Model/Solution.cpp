@@ -14,11 +14,15 @@ public:
     {
         for (State<T> *statePtr : other.m_solution)
         {
-            State<T> newState(*statePtr);    // Dereference the pointer and create a new State
-            m_solution.push_back(&newState); // Push the address of the new State to the vector
+            State<T> *newState = new State<T>(*statePtr); // Dereference the pointer and create a new State
+            m_solution.push_back(newState);               // Push the address of the new State to the vector
         }
+        this->message = other.message;
+        this->numOfNodes = other.numOfNodes;
+        this->cost = other.cost;
+        this->numOfEvaluatedNodes = other.numOfEvaluatedNodes;
     }
-    Solution<T> operator=(const Solution<T> &other)
+    Solution<T> &operator=(const Solution<T> &other)
     {
         if (this == &other)
         {
@@ -32,9 +36,13 @@ public:
         m_solution.clear();
         for (State<T> *statePtr : other.m_solution)
         {
-            State<T> newState(*statePtr);    // Dereference the pointer and create a new State
-            m_solution.push_back(&newState); // Push the address of the new State to the vector
+            State<T> newState(*statePtr); // Dereference the pointer and create a new State
+            m_solution.push_back(&newState);
         }
+        this->message = other.message;
+        this->numOfNodes = other.numOfNodes;
+        this->cost = other.cost;
+        this->numOfEvaluatedNodes = other.numOfEvaluatedNodes;
         return *this;
     }
     ~Solution()
@@ -93,7 +101,13 @@ public:
     }
     void printSolution()
     {
+        cout << "---------" << endl;
         cout << "Solution:" << endl;
+        cout << "---------" << endl;
+        cout << "---------" << endl;
+        cout << "Message: " << endl;
+        cout << this->message << endl;
+        cout << "---------" << endl;
         for (State<T> *state : m_solution)
         {
             state->printState();

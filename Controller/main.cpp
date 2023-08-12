@@ -2,21 +2,28 @@
 #include <ctime>
 #include <string>
 #include <vector>
-#include "SimpleMaze2dGenerator.h"
+#include "Model/SimpleMaze2dGenerator.h"
 #include <fstream>
-#include "CLI.h"
+#include "../View/CLI.h"
 #include <sstream>
-#include "demo.h"
-#include "mazeCompression.cpp"
+#include "../View/demo.h"
+#include "Model/mazeCompression.cpp"
+#include "GenrateMazeCommand.h"
 #include <vector>
-#include "Maze2dSearchable.h"
+// #include "Model/Maze2dSearchable.h"
 #include "SolveMazeCommand.h"
+#include "Model/BFS.cpp"
 
+
+
+#include "View.h"
+#include "Model.h"
+#include "Controller.h"
 // Test 1: Maze Generation Test
 void testMazeGeneration() {
     std::cout << "Test 1: Maze Generation Test" << std::endl;
     SimpleMaze2dGenerator generator;
-    Maze2d maze = generator.generate();
+    Maze2d maze = generator.generate(5,5);
     maze.print();
     std::cout << std::endl;
 }
@@ -28,16 +35,25 @@ void testPathfinding() {
 
     // Generate a maze using SimpleMaze2dGenerator
     SimpleMaze2dGenerator generator;
-    Maze2d maze = generator.generate();
+    Maze2d maze = generator.generate(8,8);
 
     // // Print the maze
     std::cout << "Generated Maze:" << std::endl;
     maze.print();
 
     Maze2dSearchable searchableMaze(maze);
+    cout << "BFS: Old way" << endl;
     searchableMaze.BFS();
     searchableMaze.getSolution()->printSolution();
     std::cout << std::endl;
+
+    cout << "BFS: New way" << endl;
+    BFS<std::pair<int, int> > bfs;
+    Solution<std::pair<int,int > > result = bfs.search(searchableMaze);
+    std::cout << "Efficency test: " <<endl;
+    bfs.checkEfficiency(searchableMaze);
+    std::cout << "end of search patterns"<<std::endl;
+    
 }
 
 // Test 3: Boundary Testing
@@ -126,7 +142,7 @@ void testInputValidation() {
         // Create a custom maze generator that takes incorrect inputs
         class IncorrectMazeGenerator : public Maze2dGenerator {
         public:
-            Maze2d generate() override {
+            Maze2d generate(int rows=5,int cols=5) override {
                 // Incorrect input: Trying to access maze_ without initializing it
                 Maze2d maze(5, 5);
                 maze.setCell(0, 0, 1); // Setting a cell in the maze
@@ -159,7 +175,7 @@ void testPerformance() {
         std::clock_t start_time = std::clock();
 
         // Generate the maze of the specified size
-        generator.generate();
+        generator.generate(5,5);
 
         std::clock_t end_time = std::clock();
         double time_taken = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
@@ -172,8 +188,8 @@ void testPerformance() {
 void testConsistency() {
     std::cout << "Test 6: Consistency Test" << std::endl;
     SimpleMaze2dGenerator generator;
-    Maze2d maze1 = generator.generate();
-    Maze2d maze2 = generator.generate();
+    Maze2d maze1 = generator.generate(5,5);
+    Maze2d maze2 = generator.generate(5,5);
 
     std::cout << "Maze 1:" << std::endl;
     maze1.print();
@@ -189,7 +205,7 @@ void testConsistency() {
 void testIntegration() {
     std::cout << "Test 7: Integration Test" << std::endl;
     SimpleMaze2dGenerator generator;
-    Maze2d maze = generator.generate();
+    Maze2d maze = generator.generate(5,5);
 
     // Store the generated maze in Maze2d class and test its methods
     // For example, test if Maze2d can correctly represent and store the maze
@@ -200,7 +216,7 @@ void testSerialization() {
     std::cout << "Test 8: Serialization Test" << std::endl;
    // Generate a maze using the generator
     SimpleMaze2dGenerator generator;
-    Maze2d maze1 = generator.generate();
+    Maze2d maze1 = generator.generate(5,5);
 
     // Save maze1 to a file
     maze1.saveToFile("maze.txt");
@@ -248,67 +264,57 @@ public:
     }
 };
 int main() {
-    testMazeGeneration();
-    testPathfinding();
-    testBoundary();
-    testInputValidation();
-    // testPerformance();
-    testConsistency();
-    testIntegration();
-    testSerialization();
-    testMemoryManagement();
-    testErrorHandling();
-    Demo demo;
-    demo.run();
-    // Create a maze using Maze2d class (you might have your own way to create the maze)
-    Maze2d originalMaze(5, 5);
-    // ... Set the maze data ...
-    originalMaze.setCell(0, 0, 1); // Setting a cell in the maze
-    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    originalMaze.setCell(0, 3, 1); // Setting a cell in the maze
-    originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    originalMaze.setCell(1, 0, 1); // Setting a cell in the maze
-    originalMaze.setCell(1, 1, 0); // Setting a cell in the maze
-    originalMaze.setCell(1, 2, 0); // Setting a cell in the maze
-    //print the maze
-    originalMaze.print();
-    // Save the original maze
-    originalMaze.saveToFile("original_maze.txt");
+        // testPathfinding();
+    // testMazeGeneration();
+    // testPathfinding();
+    // testBoundary();
+    // testInputValidation();
+    // // testPerformance();
+    // testConsistency();
+    // testIntegration();
+    // testSerialization();
+    // testMemoryManagement();
+    // testErrorHandling();
+    // Demo demo;
+    // demo.run();
+    // // Create a maze using Maze2d class (you might have your own way to create the maze)
+    // Maze2d originalMaze(5, 5);
+    // // ... Set the maze data ...
+    // originalMaze.setCell(0, 0, 1); // Setting a cell in the maze
+    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    // originalMaze.setCell(0, 3, 1); // Setting a cell in the maze
+    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
+    // originalMaze.setCell(1, 0, 1); // Setting a cell in the maze
+    // originalMaze.setCell(1, 1, 0); // Setting a cell in the maze
+    // originalMaze.setCell(1, 2, 0); // Setting a cell in the maze
+    // //print the maze
+    // originalMaze.print();
+    // // Save the original maze
+    // originalMaze.saveToFile("original_maze.txt");
 
-    // Compress and save the maze
-    MazeCompression::compressAndWriteToFile(originalMaze, "compressed_maze.txt");
+    // // Compress and save the maze
+    // MazeCompression::compressAndWriteToFile(originalMaze, "compressed_maze.txt");
 
-    // Load and decompress the maze
-    Maze2d decompressedMaze = MazeCompression::decompressAndReadFromFile("compressed_maze.txt");
+    // // Load and decompress the maze
+    // Maze2d decompressedMaze = MazeCompression::decompressAndReadFromFile("compressed_maze.txt");
 
-    // Compare the decompressed maze with the original
-    if (decompressedMaze == originalMaze) {
-        std::cout << "Decompressed maze matches the original maze." << std::endl;
-        std::cout << "Decompressed maze:" << std::endl;
-        decompressedMaze.print();
-    } else {
-        std::cout << "Decompressed maze does not match the original maze." << std::endl;
-    }
+    // // Compare the decompressed maze with the original
+    // if (decompressedMaze == originalMaze) {
+    //     std::cout << "Decompressed maze matches the original maze." << std::endl;
+    //     std::cout << "Decompressed maze:" << std::endl;
+    //     decompressedMaze.print();
+    // } else {
+    //     std::cout << "Decompressed maze does not match the original maze." << std::endl;
+    // }
 
+    std::unordered_map<std::string, Maze2d> mazes;
+    
+    
 
-    Maze2d hugeMaze(10,10);
+    MazeController controller;
 
-    HelloCommand helloCommand;
-    ByeCommand byeCommand;
-    SolveMazeCommand solveMazeCommand(hugeMaze);
-    // Create CLI instance with input from standard input and output to standard output
-    CLI cli(std::cin, std::cout);
-
-    // Add commands to the CLI
-    cli.addCommand("hello", &helloCommand);
-    cli.addCommand("bye", &byeCommand);
-    cli.addCommand("solve", &solveMazeCommand);
-
-    // Start the CLI
-    std::cout << "Enter a command (hello, bye,solve, or exit to teminate the program):" << std::endl;
-    cli.start();
-
+    controller.start();
     return 0;
 }
 
