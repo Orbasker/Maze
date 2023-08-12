@@ -1,6 +1,9 @@
 #pragma once
 #include "Controller/SolveMazeCommand.h"
 #include "Controller/GenrateMazeCommand.h"
+#include "Controller/CompressMazeCommand.h"
+#include "Controller/DecompressMazeCommand.h"
+#include "Controller/MazeSizeCommand.h"
 #include <unordered_map>
 #include "Model.h"
 #include "View.h"

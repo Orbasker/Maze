@@ -20,6 +20,8 @@ void SolveMazeCommand::execute()
 
         std::string name;
         std::cin >> name;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+
 
         auto it = mazes_.find(name);
         if (it != mazes_.end())
@@ -31,6 +33,8 @@ void SolveMazeCommand::execute()
             std::cout << "Please choose an algorithm from the list below" << std::endl;
             std::string algo;
             std::cin >> algo;
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+
 
             std::cout << "Chosen algorithm is: " << algo << std::endl;
 

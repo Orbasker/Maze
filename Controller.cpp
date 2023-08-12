@@ -23,10 +23,16 @@ MazeController::MazeController() : cli_(new CLI(std::cin, std::cout)), model_(ne
     ByeCommand *byeCommand = new ByeCommand();
     SolveMazeCommand *solveMazeCommand = new SolveMazeCommand(model_, view_);
     GenerateMazeCommand *genrateMazeCommand = new GenerateMazeCommand(model_, view_);
+    CompressMazeCommand *compressMazeCommand = new CompressMazeCommand(model_, view_);
+    DecompressMazeCommand *decompressMazeCommand = new DecompressMazeCommand(model_, view_);
+    MazeSizeCommand *mazeSizeCommand = new MazeSizeCommand(view_,model_);
     cli_->addCommand("hello", helloCommand);
     cli_->addCommand("bye", byeCommand);
     cli_->addCommand("genrate", genrateMazeCommand);
     cli_->addCommand("solve", solveMazeCommand);
+    cli_->addCommand("compress", compressMazeCommand);
+    cli_->addCommand("decompress", decompressMazeCommand);
+    cli_->addCommand("mazeSize", mazeSizeCommand);
 }
 
 void MazeController::start()

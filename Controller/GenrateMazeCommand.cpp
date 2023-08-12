@@ -15,6 +15,8 @@ void GenerateMazeCommand::execute()
     try
     {
         std::cin >> size_;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+
     }
     catch (std::exception &e)
     {

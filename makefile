@@ -3,7 +3,7 @@ CFLAGS = -g -std=c++11
 
 INCLUDES = -I.
 
-OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o GenrateMazeCommand.o View.o Model.o Controller.o# Add other object files for other classes if present
+OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o GenrateMazeCommand.o View.o Model.o Controller.o CompressMazeCommand.o DecompressMazeCommand.o MazeSizeCommand.o     # Add other object files for other classes if present
 
 main: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o main
@@ -42,12 +42,19 @@ CommonSearcher.o:  Model/CommonSearcher.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c Model/CommonSearcher.cpp
 GenrateMazeCommand.o: Controller/GenrateMazeCommand.cpp Controller/GenrateMazeCommand.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/GenrateMazeCommand.cpp
+CompressMazeCommand.o: Controller/CompressMazeCommand.cpp Controller/CompressMazeCommand.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/CompressMazeCommand.cpp
+DecompressMazeCommand.o: Controller/DecompressMazeCommand.cpp Controller/DecompressMazeCommand.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/DecompressMazeCommand.cpp
+MazeSizeCommand.o: Controller/MazeSizeCommand.cpp Controller/MazeSizeCommand.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/MazeSizeCommand.cpp
 Controller.o: Controller.h Controller.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller.cpp
 Model.o: Model.h Model.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c Model.cpp
 View.o: View.h View.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c View.cpp
+
 
 # Add compilation rules for other classes if present
 # For example:

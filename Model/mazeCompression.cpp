@@ -1,15 +1,18 @@
 
+#ifndef MAZE_COMPRESSION_CPP
+#define MAZE_COMPRESSION_CPP
 #include <vector>
 #include <fstream>
 #include "maze2d.h"
+#include <sys/stat.h>
 
 class MazeCompression {
 public:
     // Compress and write maze data to a file
     static void compressAndWriteToFile(const Maze2d& maze, const std::string& filename) {
         std::vector<int> compressedData = compressMazeData(maze);
-        
-        std::ofstream outFile(filename, std::ios::binary);
+        std::string path = "Mazes/" + filename;
+        std::ofstream outFile(path, std::ios::binary);
         if (outFile.is_open()) {
             outFile.write(reinterpret_cast<const char*>(compressedData.data()), compressedData.size() * sizeof(int));
             outFile.close();
@@ -18,7 +21,8 @@ public:
 
     // Read and decompress maze data from a file
     static Maze2d decompressAndReadFromFile(const std::string& filename) {
-        std::ifstream inFile(filename, std::ios::binary | std::ios::ate);
+        std::string path = "Mazes/" + filename;
+        std::ifstream inFile(path, std::ios::binary | std::ios::ate);
         if (inFile.is_open()) {
             std::streampos size = inFile.tellg();
             std::vector<int> compressedData(size / sizeof(int));
@@ -34,6 +38,11 @@ public:
         }
         
         return Maze2d(); // Return an empty maze if file cannot be read
+   }
+   long long getFileDetails(const std::string& filename) {
+       struct stat stat_buf;
+       int rc = stat(filename.c_str(), &stat_buf);
+      return rc == 0 ? stat_buf.st_size : -1;
    }
 
 private:
@@ -70,3 +79,6 @@ private:
         return decompressedData;
     }
 };
+
+
+#endif // !MAZE_COMPRESSION_CPP
