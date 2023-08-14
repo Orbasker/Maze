@@ -30,6 +30,7 @@ MazeController::MazeController() : cli_(new CLI(std::cin, std::cout)), model_(ne
     mazeMatrixSizeCommand *MazeMatrixSizeCommand = new mazeMatrixSizeCommand(view_,model_);
     DisplayMazeCommand *displayMazeCommand = new DisplayMazeCommand(view_,model_);
     ShowDirCommand *showDirCommand = new ShowDirCommand(view_,model_);
+    SolveFromFileCommand* solveMazeFileCommand = new SolveFromFileCommand(model_,view_);
     cli_->addCommand("generateMaze", genrateMazeCommand);
     cli_->addCommand("solveMaze", solveMazeCommand);
     cli_->addCommand("saveMaze", compressMazeCommand);
@@ -38,6 +39,7 @@ MazeController::MazeController() : cli_(new CLI(std::cin, std::cout)), model_(ne
     cli_->addCommand("fileSize", mazeSizeCommand);
     cli_->addCommand("display", displayMazeCommand);
     cli_->addCommand("dir", showDirCommand);
+    cli_->addCommand("seeSolution", solveMazeFileCommand );
 }
 
 
@@ -46,6 +48,5 @@ void MazeController::start()
 {
     std::cout <<BOLD<<UNDERLINE<<RED<< "Welcome to the Maze Game!" <<RESET<< endl;
     // std::cout << "Here are the commands you can use:" << endl;
-    cli_->printMenu();
     cli_->start();
 }

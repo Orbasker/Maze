@@ -9,11 +9,16 @@ void DisplayMazeCommand::execute()
     std::cin >> mazeName;
 
     //get the maze from the model
+    try {
     Maze2d maze = model_->getMaze(mazeName);
     view_->displayMaze(maze);
     view_->displayMessage("Maze displayed successfully");
 
     view_->displaySolution(*model_->getSolution(mazeName));
+    }
+    catch (std::exception& e) {
 
+        view_->displayMessage(e.what());
+    }
     
 }

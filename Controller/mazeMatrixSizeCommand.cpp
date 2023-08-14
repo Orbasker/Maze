@@ -11,8 +11,9 @@ void mazeMatrixSizeCommand::execute() {
     MazeCompression *compress;
     Maze2d maze = compress->decompressAndReadFromFile("Mazes/" + name + ".txt");
     // Maze2d maze = model_->getMaze(name);
-    if (maze.getSize() == 0) {
-        cout << "The maze does not exist" << endl;
+    if (maze.getSize() == 0  || maze.getCell(0,0) != 2 ){
+        cout<<BOLD <<RED << "The maze does not exist" <<RESET<< endl;
+        cout<<BOLD <<YELLOW<< "Maybe you tried to search in the mazes file? so try the command:"<<BOLD<<CYAN<<" fileSize " <<RESET<< endl;
         return;
     }
     cout << "The size of the maze is: " << maze.getSize() << endl;

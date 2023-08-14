@@ -7,6 +7,7 @@
 #include "Controller/mazeMatrixSizeCommand.h"
 #include "Controller/DisplayMazeCommand.h"
 #include "Controller/ShowDirCommand.h"
+#include "Controller/solveFromFile.h"
 #include <unordered_map>
 #include "Model.h"
 #include "View.h"

@@ -12,21 +12,18 @@ void CLI::start()
     while (true)
     {
         // output_<< "Welcome to the best CLI ever!" << std::endl;
+        // print commands
+        printMenu();
+
         output_<< "Please enter a command:" << std::endl;
-        // output_<< "This is a list of the commands:" << std::endl;
-        // output_<< "Press exit at any time to escape" << std::endl;
-        // for (auto it = commandMap_.begin(); it != commandMap_.end(); ++it)
-        // {
-        //     output_ << it->first << std::endl;
-        // }
-        output_ << "Enter command:" << std::endl;
+       
         std::string userInput;
         std::getline(input_, userInput);
 
         if (userInput == "exit")
         {
-            std::cout << "Bye Bye" << std::endl;
-            std::cout <<"Hate to see you leave :(" << std::endl;
+            std::cout <<BLUE<< "Bye Bye" << std::endl;
+            std::cout <<"Hate to see you leave :(" <<RESET<< std::endl;
             return;
         }
 
@@ -37,7 +34,7 @@ void CLI::start()
         }
         else
         {
-            output_ << "Unknown command: " << userInput << std::endl;
+            output_ <<RED<< "Unknown command: " << userInput << std::endl;
         }
     }
 }
@@ -45,11 +42,14 @@ void CLI::start()
 
 void CLI::printMenu()
 {
-    output_<< "Welcome to the best CLI ever!" << std::endl;
-    output_<< "This is a list of the commands:" << std::endl;
-    output_<< "Press exit at any time to escape" << std::endl;
+    output_<< BOLD<<MAGENTA <<"Welcome to the best CLI ever!" << std::endl;
+    output_<<CYAN << "This is a list of the commands:" << std::endl;
+    output_<< CYAN<<"Press exit at any time to escape" << RESET<<std::endl;
+    //lets print it nice with tabs instead of enter
+
     for (auto it = commandMap_.begin(); it != commandMap_.end(); ++it)
     {
-        output_ << it->first << std::endl;
+        output_ << BOLD<<it->first << RESET << "        ";
     }
+    output_<<std::endl;
 }

@@ -106,6 +106,7 @@ public:
     }
     friend std::ostream &operator<<(std::ostream &os, const std::pair<int, int> &p)
     {
+
         os << "(" << p.first << ", " << p.second << ")";
         return os;
     }

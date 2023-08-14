@@ -16,15 +16,29 @@ void GenerateMazeCommand::execute()
     {
         std::cin >> size_;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+        while (!(std::cin >> size_)) {
+        // Clear the input stream and ignore any remaining characters
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
+        std::cout <<BOLD<<RED<< "Invalid input. Please enter a valid number: "<<RESET<<std::endl;
+        }
+        
+            model_->generateMaze(name_, size_, size_);
+            std::cout <<BOLD<<GREEN<< "Maze '" << name_ << "' generated and saved." <<RESET<< std::endl;
+        
+            view_->displayMaze(model_->getMaze(name_));
+        
+       
     }
     catch (std::exception &e)
     {
-        std::cout << "Invalid input" << std::endl;
+        std::cout <<BOLD<<RED<< "Invalid input" <<RESET<< std::endl;
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
-    model_->generateMaze(name_, size_, size_);
-
-    std::cout << "Maze '" << name_ << "' generated and saved." << std::endl;
-    view_->displayMaze(model_->getMaze(name_));
+    catch (const char *msg)
+    {
+        std::cout <<RED<< msg <<RESET<< std::endl;
+    }
+    
+    
 }

@@ -3,7 +3,7 @@ CFLAGS = -g -std=c++17
 
 INCLUDES = -I.
 
-OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o GenrateMazeCommand.o View.o Model.o Controller.o CompressMazeCommand.o DecompressMazeCommand.o MazeSizeCommand.o DisplayMazeCommand.o MazeMatrixSizeCommand.o ShowDirCommand.o    # Add other object files for other classes if present
+OBJS = main.o maze2d.o maze2dGenerator.o Maze2dSearchable.o SimpleMaze2dGenerator.o mazeAdapter.o demo.o mazeCompression.o command.o CLI.o SolveMazeCommand.o BFS.o State.o Solution.o CommonSearcher.o GenrateMazeCommand.o View.o Model.o Controller.o CompressMazeCommand.o DecompressMazeCommand.o MazeSizeCommand.o DisplayMazeCommand.o MazeMatrixSizeCommand.o ShowDirCommand.o solveFromFile.o   # Add other object files for other classes if present
 
 main: $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o main
@@ -54,6 +54,8 @@ MazeMatrixSizeCommand.o: Controller/MazeMatrixSizeCommand.cpp Controller/MazeMat
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/MazeMatrixSizeCommand.cpp
 ShowDirCommand.o: Controller/ShowDirCommand.cpp Controller/ShowDirCommand.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/ShowDirCommand.cpp
+solveFromFile.o: Controller/solveFromFile.cpp Controller/solveFromFile.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/solveFromFile.cpp
 Controller.o: Controller.h Controller.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller.cpp
 Model.o: Model.h Model.cpp
