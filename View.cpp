@@ -18,5 +18,5 @@ void MazeView::displaySolution(Solution<std::pair<int, int> >& maze)  {
 }
 void MazeView::displayMessage(const std::string& message) const {
     // Display a message to the user
-    std::cout << message << std::endl;
+    std::cout <<RED<< message << RESET<<std::endl;
 }

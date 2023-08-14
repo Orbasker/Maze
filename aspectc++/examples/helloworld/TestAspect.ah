@@ -1,0 +1,9 @@
+aspect TestAspect {
+    // Define a named pointcut that represents the class "C"
+    pointcut mypct2() = "C";
+
+    // Use the named pointcut in an advice
+    before() : mypct() {
+        cout << "Aspect Test: Function called" << endl;
+    }
+};

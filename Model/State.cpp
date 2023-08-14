@@ -26,7 +26,7 @@ public:
 
     State<T> *getStartState()
     {
-        return new State<std::pair<int, int>>(std::make_pair(0, 0));
+        return new State<std::pair<int, int> >(std::make_pair(0, 0));
     }
     State(const State &other)
     {
@@ -48,7 +48,7 @@ public:
         m_cost = s.m_cost;
         if (s.m_cameFrom)
         {
-            m_cameFrom = std::unique_ptr<State<T>>(*s.m_cameFrom);
+            m_cameFrom = std::unique_ptr<State<T> >(*s.m_cameFrom);
         }
         else
         {
@@ -62,7 +62,7 @@ public:
     {
         int n = maze_.getRows();
         int m = maze_.getCols();
-        return new State<std::pair<int, int>>(std::make_pair(n - 1, m - 1));
+        return new State<std::pair<int, int> >(std::make_pair(n - 1, m - 1));
     }
 
     void setVisited()
@@ -106,6 +106,7 @@ public:
     }
     friend std::ostream &operator<<(std::ostream &os, const std::pair<int, int> &p)
     {
+
         os << "(" << p.first << ", " << p.second << ")";
         return os;
     }

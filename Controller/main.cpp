@@ -19,6 +19,7 @@
 #include "View.h"
 #include "Model.h"
 #include "Controller.h"
+// #include "TestAspect.ah"
 // Test 1: Maze Generation Test
 void testMazeGeneration() {
     std::cout << "Test 1: Maze Generation Test" << std::endl;
@@ -263,6 +264,10 @@ public:
         std::cout << "Goodbye!" << std::endl;
     }
 };
+
+
+
+
 int main() {
         // testPathfinding();
     // testMazeGeneration();

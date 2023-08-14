@@ -41,6 +41,7 @@ void SolveMazeCommand::execute()
             try
             {
                 model_->solveMaze(name, algo);
+                
             }
             catch (const std::exception &e)
             {

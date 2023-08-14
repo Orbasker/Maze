@@ -25,10 +25,14 @@ public:
     virtual Solution<T> search(Maze2dSearchable &maze) override
     {
         Solution<T> *solution;
+        std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now();
         maze.BFS();
+        std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
+        std::chrono::duration<double> timeTaken = std::chrono::duration_cast<std::chrono::duration<double> >(endTime - startTime);
+
         cout << "BFS complete!" << endl;
         solution = maze.getSolution();
-
+        solution->setTime(timeTaken.count());
         Solution<T> result(*solution);
 
         return result;
@@ -54,10 +58,10 @@ public:
         std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
 
         // Calculate the time taken
-        std::chrono::duration<double> timeTaken = std::chrono::duration_cast<std::chrono::duration<double>>(endTime - startTime);
+        std::chrono::duration<double> timeTaken = std::chrono::duration_cast<std::chrono::duration<double> >(endTime - startTime);
 
         std::cout << "Time taken: " << timeTaken.count() << " seconds" << std::endl;
-
+        
         // Additional efficiency analysis or comparisons can be added here
     }
 
