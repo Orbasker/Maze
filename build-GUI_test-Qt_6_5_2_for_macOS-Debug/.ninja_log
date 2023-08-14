@@ -1,9 +1,0 @@
-# ninja log v5
-1	25	0	/Users/orbasker/Desktop/Maze/build-GUI_test-Qt_6_5_2_for_macOS-Debug/CMakeFiles/cmake.verify_globs	91526f1eed4aa151
-118	201	1691861733877103639	CMakeFiles/GUI_test.dir/GUI_test_autogen/mocs_compilation.cpp.o	145585da12eb55e4
-67	1227	1691862323348351112	CMakeFiles/GUI_test.dir/main.cpp.o	a5b57485fe77e293
-11	63	1691862711344130082	GUI_test_autogen/mocs_compilation.cpp	534f233a12f9af04
-11	63	1691862711344130082	GUI_test_autogen/timestamp	534f233a12f9af04
-11	63	1691862711344130082	/Users/orbasker/Desktop/Maze/build-GUI_test-Qt_6_5_2_for_macOS-Debug/GUI_test_autogen/mocs_compilation.cpp	534f233a12f9af04
-11	63	1691862711344130082	/Users/orbasker/Desktop/Maze/build-GUI_test-Qt_6_5_2_for_macOS-Debug/GUI_test_autogen/timestamp	534f233a12f9af04
-1227	1318	1691862323442592208	GUI_test	385aeb3c41a9391
