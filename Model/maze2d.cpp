@@ -153,3 +153,7 @@ void Maze2d::setData(const std::vector<int>& data) {
             }
         }
 }
+
+long long Maze2d::getSize() const{
+    return sizeof(maze_)*maze_.size()*maze_[0].size();
+}

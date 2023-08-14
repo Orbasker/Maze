@@ -4,6 +4,9 @@
 #include "Controller/CompressMazeCommand.h"
 #include "Controller/DecompressMazeCommand.h"
 #include "Controller/MazeSizeCommand.h"
+#include "Controller/mazeMatrixSizeCommand.h"
+#include "Controller/DisplayMazeCommand.h"
+#include "Controller/ShowDirCommand.h"
 #include <unordered_map>
 #include "Model.h"
 #include "View.h"

@@ -12,7 +12,7 @@ public:
     CLI(std::istream &input, std::ostream &output);
 
     void addCommand(const std::string &commandName, Command *command);
-
+    void printMenu();
     void start();
 
 private:

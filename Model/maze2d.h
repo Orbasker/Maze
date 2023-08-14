@@ -15,6 +15,7 @@ public:
     int getCell(int i, int j) const;
     int getRows() const;
     int getCols() const;
+    long long getSize() const;
     void setCell(int i, int j, int value);
     void print() const;
     // Save the maze to a file

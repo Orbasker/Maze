@@ -21,6 +21,7 @@ public:
         this->numOfNodes = other.numOfNodes;
         this->cost = other.cost;
         this->numOfEvaluatedNodes = other.numOfEvaluatedNodes;
+        this->time = other.time;
     }
     Solution<T> &operator=(const Solution<T> &other)
     {
@@ -43,6 +44,7 @@ public:
         this->numOfNodes = other.numOfNodes;
         this->cost = other.cost;
         this->numOfEvaluatedNodes = other.numOfEvaluatedNodes;
+        this->time = other.time;
         return *this;
     }
     ~Solution()
@@ -115,6 +117,15 @@ public:
         cout << "Cost: " << this->cost << endl;
         cout << "Number of nodes: " << this->numOfNodes << endl;
         cout << "Number of evaluated nodes: " << this->numOfEvaluatedNodes << endl;
+        cout << "time took to solve: " << this->time << endl;
+    }
+    void setTime(double time)
+    {
+        this->time = time;
+    }
+    double getTime()
+    {
+        return this->time;
     }
 
 private:
@@ -123,6 +134,7 @@ private:
     int numOfNodes;
     int cost;
     int numOfEvaluatedNodes;
+    double time;
 };
 
 #endif // SOLUTION_CPP

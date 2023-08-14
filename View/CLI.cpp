@@ -41,3 +41,15 @@ void CLI::start()
         }
     }
 }
+
+
+void CLI::printMenu()
+{
+    output_<< "Welcome to the best CLI ever!" << std::endl;
+    output_<< "This is a list of the commands:" << std::endl;
+    output_<< "Press exit at any time to escape" << std::endl;
+    for (auto it = commandMap_.begin(); it != commandMap_.end(); ++it)
+    {
+        output_ << it->first << std::endl;
+    }
+}

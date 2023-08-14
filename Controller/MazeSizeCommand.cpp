@@ -13,7 +13,7 @@ void MazeSizeCommand::execute()
     std::cin >> mazeName;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
     //get the size of the maze
-    long long size = mazeCompression.getFileDetails(mazeName+".txt");
+    long long size = mazeCompression.getFileDetails("Mazes/"+mazeName+".txt");
     //print the size of the maze
     if (size == -1)
     {
