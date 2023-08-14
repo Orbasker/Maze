@@ -29,7 +29,7 @@ void MazeModel::solveMaze(const std::string &name, const std::string &algorithm)
         mazes_.at(name).print();
         Maze2dSearchable searchable(mazes_.at(name));
         Solution<std::pair<int, int>> result = bfs.search(searchable);
-        result.printSolution();
+        // result.printSolution();
         Solution<std::pair<int, int>> *newSolution = new Solution<std::pair<int, int>>(result);
         solutions_[name] = newSolution;
         cout << "Solution added to map" << endl;

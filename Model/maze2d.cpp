@@ -76,10 +76,10 @@ void Maze2d::print() const {
                 std::cout << RED << cell << ' ';
             }
             if (cell == 2) {
-                std::cout << BLUE << cell << ' ';
+                std::cout << BLUE << "S" << ' ';
             }
             if (cell == 3) {
-                std::cout << YELLOW << cell<<RESET << ' ';
+                std::cout << YELLOW << "G"<<RESET << ' ';
             }
     }
         std::cout << '\n';

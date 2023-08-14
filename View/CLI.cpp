@@ -51,5 +51,5 @@ void CLI::printMenu()
     {
         output_ << BOLD<<it->first << RESET << "        ";
     }
-    output_<<std::endl;
+    output_<<BOLD<<"end"<<RESET<<std::endl;
 }
