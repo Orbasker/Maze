@@ -63,7 +63,6 @@ void Maze2d::setCell(int i, int j, int value)
     maze_[i][j] = value;
 }
 
-<<<<<<< HEAD
 void Maze2d::print() const {
     // Implement the method to print the maze
     
@@ -82,18 +81,6 @@ void Maze2d::print() const {
             if (cell == 3) {
                 std::cout << YELLOW << cell<<RESET << ' ';
             }
-=======
-void Maze2d::print() const
-{
-
-    for (const auto &row : maze_)
-    {
-        for (int cell : row)
-        {
-            std::cout << cell << ' ';
-        }
-        std::cout << '\n';
->>>>>>> temp
     }
         std::cout << '\n';
 
@@ -203,12 +190,9 @@ void Maze2d::setData(const std::vector<int> &data)
         {
             maze_[i][j] = data[dataIndex++];
         }
-<<<<<<< HEAD
+}
 }
 
 long long Maze2d::getSize() const{
     return sizeof(maze_)*maze_.size()*maze_[0].size();
-=======
-    }
->>>>>>> temp
 }
