@@ -4,13 +4,13 @@
 #include "command.cpp"
 #include "../View.h"
 #include "../Model/mazeCompression.cpp"
-class CompressMazeCommand: public Command
+class CompressMazeCommand : public Command
 {
-    public:
-    CompressMazeCommand(MazeModel *model, MazeView *view): model_(model),view_(view)   {}
+public:
+    CompressMazeCommand(MazeModel *model, MazeView *view) : model_(model), view_(view) {}
     void execute() override;
 
-    private:
-    MazeModel* model_;
+private:
+    MazeModel *model_;
     MazeView *view_;
 };

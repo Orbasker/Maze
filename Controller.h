@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include "Model.h"
 #include "View.h"
-#include "View/CLI.h"  // Include the CLI header
+#include "View/CLI.h"  
 
 class MazeController {
 public:
@@ -22,9 +22,5 @@ public:
 private:
     MazeModel* model_;
     MazeView* view_;
-    CLI* cli_;  // Include the CLI instance
-
-    // void handleGenerateCommand();
-    // void handleSolveCommand();
-    // Add other command handling methods as needed
+    CLI* cli_;  
 };

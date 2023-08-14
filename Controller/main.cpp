@@ -197,59 +197,10 @@ void testConsistency() {
     std::cout << "Maze 2:" << std::endl;
     maze2.print();
 
-    // Check if maze1 and maze2 are consistent and reproducible
-    // Compare the mazes generated with the same input parameters
-    // They should be different as they are generated independently
 }
 
-// Test 7: Integration Test
-void testIntegration() {
-    std::cout << "Test 7: Integration Test" << std::endl;
-    SimpleMaze2dGenerator generator;
-    Maze2d maze = generator.generate(5,5);
 
-    // Store the generated maze in Maze2d class and test its methods
-    // For example, test if Maze2d can correctly represent and store the maze
-}
 
-// Test 8: Serialization Test
-void testSerialization() {
-    std::cout << "Test 8: Serialization Test" << std::endl;
-   // Generate a maze using the generator
-    SimpleMaze2dGenerator generator;
-    Maze2d maze1 = generator.generate(5,5);
-
-    // Save maze1 to a file
-    maze1.saveToFile("maze.txt");
-
-    // Load the maze from the file into maze2
-    Maze2d maze2;
-    maze2.loadFromFile("maze.txt");
-
-    // Check if maze1 and maze2 are identical
-    if (maze1 == maze2) {
-        std::cout << "Serialization Test: Passed" << std::endl;
-    } else {
-        std::cout << "Serialization Test: Failed" << std::endl;
-    }
-    // Load the maze from the file into maze2
-    // Check if maze1 and maze2 are identical
-}
-
-// Test 9: Memory Management Test
-void testMemoryManagement() {
-    std::cout << "Test 9: Memory Management Test" << std::endl;
-    // Add the memory management testing code here
-    // Check for memory leaks or memory-related issues during maze generation and usage
-
-}
-
-// Test 10: Error Handling Test
-void testErrorHandling() {
-    std::cout << "Test 10: Error Handling Test" << std::endl;
-    // Add the error handling testing code here
-    // Test how the algorithm and the Maze2d class handle unexpected errors or exceptions
-}
 
 class HelloCommand : public Command {
 public:
@@ -269,51 +220,18 @@ public:
 
 
 int main() {
-        // testPathfinding();
-    // testMazeGeneration();
-    // testPathfinding();
-    // testBoundary();
-    // testInputValidation();
-    // // testPerformance();
-    // testConsistency();
-    // testIntegration();
-    // testSerialization();
-    // testMemoryManagement();
-    // testErrorHandling();
-    // Demo demo;
-    // demo.run();
-    // // Create a maze using Maze2d class (you might have your own way to create the maze)
-    // Maze2d originalMaze(5, 5);
-    // // ... Set the maze data ...
-    // originalMaze.setCell(0, 0, 1); // Setting a cell in the maze
-    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    // originalMaze.setCell(0, 3, 1); // Setting a cell in the maze
-    // originalMaze.setCell(0, 4, 1); // Setting a cell in the maze
-    // originalMaze.setCell(1, 0, 1); // Setting a cell in the maze
-    // originalMaze.setCell(1, 1, 0); // Setting a cell in the maze
-    // originalMaze.setCell(1, 2, 0); // Setting a cell in the maze
-    // //print the maze
-    // originalMaze.print();
-    // // Save the original maze
-    // originalMaze.saveToFile("original_maze.txt");
+    testPathfinding();
+    testMazeGeneration();
+    testPathfinding();
+    testBoundary();
+    testInputValidation();
+    testPerformance();
+    testConsistency();
+   
+    Demo demo;
+    demo.run();
 
-    // // Compress and save the maze
-    // MazeCompression::compressAndWriteToFile(originalMaze, "compressed_maze.txt");
-
-    // // Load and decompress the maze
-    // Maze2d decompressedMaze = MazeCompression::decompressAndReadFromFile("compressed_maze.txt");
-
-    // // Compare the decompressed maze with the original
-    // if (decompressedMaze == originalMaze) {
-    //     std::cout << "Decompressed maze matches the original maze." << std::endl;
-    //     std::cout << "Decompressed maze:" << std::endl;
-    //     decompressedMaze.print();
-    // } else {
-    //     std::cout << "Decompressed maze does not match the original maze." << std::endl;
-    // }
-
-    std::unordered_map<std::string, Maze2d> mazes;
+    // std::unordered_map<std::string, Maze2d> mazes;
     
     
 

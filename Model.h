@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "Model/BFS.cpp" // Include your Maze data structure header
+#include "Model/BFS.cpp" 
 #include "Model/SimpleMaze2dGenerator.h"
 #include <map>
 #include <unordered_map>

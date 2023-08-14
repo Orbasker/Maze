@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include "Controller/command.cpp"
+<<<<<<< HEAD
 
 #define RED "\033[31m"
 #define RESET "\033[0m"
@@ -21,6 +22,8 @@
 #define CLEAR "\033[2J"
 #define CLRLINE "\r\033[K"
 // #include "../Controller/Command.h"
+=======
+>>>>>>> 1a1b51d (fgfg)
 
 class CLI
 {

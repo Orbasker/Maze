@@ -32,7 +32,7 @@ CLI.o: View/CLI.cpp View/CLI.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c View/CLI.cpp 
 SolveMazeCommand.o: Controller/SolveMazeCommand.cpp Controller/SolveMazeCommand.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c Controller/SolveMazeCommand.cpp
-BFS.o: Model/BFS.cpp Model/BFS.h
+BFS.o: Model/BFS.cpp 
 	$(CC) $(CFLAGS) $(INCLUDES) -c Model/BFS.cpp
 State.o:  Model/State.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c Model/State.cpp

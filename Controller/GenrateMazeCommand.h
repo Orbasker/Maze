@@ -16,5 +16,4 @@ private:
     MazeView* view_;
     std::string name_;
     int size_;
-    // Other parameters needed for maze generation
 };

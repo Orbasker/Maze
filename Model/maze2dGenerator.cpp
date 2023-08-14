@@ -1,7 +1,8 @@
 
 #include "maze2dGenerator.h"
 
-std::string Maze2dGenerator::measureAlgorithmTime() {
+std::string Maze2dGenerator::measureAlgorithmTime()
+{
     std::clock_t start_time = std::clock();
     Maze2d maze = generate();
     std::clock_t end_time = std::clock();
