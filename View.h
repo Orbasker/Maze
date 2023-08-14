@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "Model/Maze2dSearchable.h"  // Include your Maze data structure header
+#include "Model/Maze2dSearchable.h"  
 
 class MazeView {
 public:

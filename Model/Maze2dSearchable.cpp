@@ -27,7 +27,6 @@ std::vector<State<std::pair<int, int>> *> Maze2dSearchable::getAllPossibleStates
     int n = maze_.getRows();
     int m = maze_.getCols();
 
-    // Define possible movement directions (up, down, left, right)
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
 
@@ -38,7 +37,6 @@ std::vector<State<std::pair<int, int>> *> Maze2dSearchable::getAllPossibleStates
 
         if ((ni >= 0 && ni < n && nj >= 0 && nj < m) && ((maze_.getCell(ni, nj) == 0) || (maze_.getCell(ni, nj) == 3)))
         {
-            // Create a new state with the next position and set the current state as its parent
             State<std::pair<int, int>> *nextState = new State<std::pair<int, int>>(std::make_pair(ni, nj));
             nextState->setCameFrom(&s);
             possibleStates.push_back(nextState);
@@ -61,8 +59,6 @@ void Maze2dSearchable::setPossibleMoves()
         }
     }
 }
-
-// ... (previous code)
 
 void Maze2dSearchable::BFS()
 {
@@ -99,8 +95,6 @@ void Maze2dSearchable::BFS()
                 path.push_front(currentState->getState());
                 currentState = currentState->getCameFrom();
             }
-
-            // Print the path
             solution->setMessege("Path from start to goal:");
             for (const std::pair<int, int> &pos : path)
             {
@@ -144,4 +138,3 @@ Solution<std::pair<int, int>> *Maze2dSearchable::getSolution()
 {
     return this->solution_;
 }
-// ... (remaining code)

@@ -5,7 +5,7 @@ void CompressMazeCommand::execute()
     std::string file_name;
     std::cout <<BLUE<< "Enter the name of the file you want to compare to the maze: " <<RESET<< std::endl;
     std::cin >> file_name;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
 
     //Get the maze to compress

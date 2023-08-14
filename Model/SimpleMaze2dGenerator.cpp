@@ -1,6 +1,6 @@
 #include "SimpleMaze2dGenerator.h"
-#include <cstdlib> // Include for rand()
-#include <ctime>   // Include for srand()
+#include <cstdlib> 
+#include <ctime>   
 
 SimpleMaze2dGenerator::SimpleMaze2dGenerator()
 {
@@ -9,19 +9,16 @@ SimpleMaze2dGenerator::SimpleMaze2dGenerator()
 
 Maze2d SimpleMaze2dGenerator::generate(int rows = 5, int cols = 5)
 {
-    // Algorithm for generating a simple maze with random walls and a random path
     int n = rows;
     int m = cols;
     Maze2d maze(n, m);
 
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    // Set all cells as walls
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            // Randomly set some cells as empty spaces
             if (rand() % 4 != 0)
             {
                 maze.setCell(i, j, 0); // 0 represents empty space
