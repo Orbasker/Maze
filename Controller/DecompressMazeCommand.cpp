@@ -1,14 +1,12 @@
 
 #include "DecompressMazeCommand.h"
-void DecompressMazeCommand::execute() {
-    //ask the user for the path
+void DecompressMazeCommand::execute()
+{
     string path;
-    cout << "Please enter the path of the file you want to decompress" << endl;
+    cout <<MAGENTA<< "Please enter the path of the file you want to decompress" <<RESET<< endl;
     cin >> path;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
-    Maze2d maze = MazeCompression::decompressAndReadFromFile(path+".txt");
-    //print the maze
+    Maze2d maze = MazeCompression::decompressAndReadFromFile(path + ".txt");
     view_->displayMaze(maze);
-    // cout << maze << endl;
 }

@@ -7,7 +7,6 @@ class MazeAdapter : public Searchable<std::pair<int, int> > {
 public:
     MazeAdapter(Maze2d& maze) ;
 
-    // Implement the methods of the Searchable interface by delegating to the Maze2d instance
     virtual State<std::pair<int, int> >* getStartState() {
         return startState_;
     }

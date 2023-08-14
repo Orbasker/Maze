@@ -14,8 +14,8 @@ public:
     {
         for (State<T> *statePtr : other.m_solution)
         {
-            State<T> *newState = new State<T>(*statePtr); // Dereference the pointer and create a new State
-            m_solution.push_back(newState);               // Push the address of the new State to the vector
+            State<T> *newState = new State<T>(*statePtr); 
+            m_solution.push_back(newState);               
         }
         this->message = other.message;
         this->numOfNodes = other.numOfNodes;
@@ -28,7 +28,6 @@ public:
         {
             return *this;
         }
-        // Clean up the solution vector if needed
         for (State<T> *state : m_solution)
         {
             delete state;
@@ -36,7 +35,7 @@ public:
         m_solution.clear();
         for (State<T> *statePtr : other.m_solution)
         {
-            State<T> newState(*statePtr); // Dereference the pointer and create a new State
+            State<T> newState(*statePtr); 
             m_solution.push_back(&newState);
         }
         this->message = other.message;
@@ -47,7 +46,6 @@ public:
     }
     ~Solution()
     {
-        // Clean up the solution vector if needed
         for (State<T> *state : m_solution)
         {
             delete state;

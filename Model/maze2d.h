@@ -17,14 +17,12 @@ public:
     int getCols() const;
     void setCell(int i, int j, int value);
     void print() const;
-    // Save the maze to a file
     bool saveToFile(const std::string& filename);
 
-    // Load the maze from a file
     static Maze2d loadFromFile(const std::string& filename);
     bool operator==(const Maze2d& other) const;
-    std::vector<int> getData() const; // Add this method to retrieve raw maze data
-    void setData(const std::vector<int>& data); // Add this method to set raw maze data
+    std::vector<int> getData() const; 
+    void setData(const std::vector<int>& data);
     static Maze2d createFromData(const std::vector<int>& data);
 
 private:

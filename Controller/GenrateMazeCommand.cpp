@@ -1,30 +1,29 @@
 #include "GenrateMazeCommand.h"
-#include <iostream> // Include necessary headers for std::cout
+#include <iostream>
 
 GenerateMazeCommand::GenerateMazeCommand(MazeModel *model, MazeView *view)
-    : model_(model), view_(view) /* other params initialization */ {}
+    : model_(model), view_(view) {}
 
 void GenerateMazeCommand::execute()
 {
-    // Get from user the paramaters for the maze'
-    std::cout << "Enter the name of the maze: ";
-    std::cin >> name_;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
 
-    std::cout << "Enter the size of the maze: ";
+    std::cout <<MAGENTA<< "Enter the name of the maze: "<<RESET;
+    std::cin >> name_;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::cout <<MAGENTA<< "Enter the size of the maze: "<<RESET;
     try
     {
         std::cin >> size_;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
-
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     catch (std::exception &e)
     {
-        std::cout << "Invalid input" << std::endl;
+        std::cout <<RED<< "Invalid input" <<RESET<< std::endl;
     }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     model_->generateMaze(name_, size_, size_);
 
-    std::cout << "Maze '" << name_ << "' generated and saved." << std::endl;
+    std::cout <<GREEN<< "Maze '" << name_ << "' generated and saved." <<RESET<< std::endl;
     view_->displayMaze(model_->getMaze(name_));
 }

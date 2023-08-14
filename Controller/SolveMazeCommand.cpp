@@ -30,13 +30,13 @@ void SolveMazeCommand::execute()
             std::cout << "Chosen maze is: " << name << std::endl;
             maze_.print();
 
-            std::cout << "Please choose an algorithm from the list below" << std::endl;
+            std::cout <<BOLD <<MAGENTA<< "Please choose an algorithm from the list below" << RESET<<std::endl;
             std::string algo;
             std::cin >> algo;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
 
 
-            std::cout << "Chosen algorithm is: " << algo << std::endl;
+            std::cout <<MAGENTA<< "Chosen algorithm is: " << algo << RESET <<std::endl;
 
             try
             {
@@ -44,17 +44,17 @@ void SolveMazeCommand::execute()
             }
             catch (const std::exception &e)
             {
-                std::cout << e.what() << std::endl;
+                std::cout <<BOLD <<MAGENTA<< e.what() << RESET<<std::endl;
             }
         }
         else
         {
-            std::cout << "Maze not found" << std::endl;
+            std::cout <<BOLD <<RED<< "Maze not found" <<RESET<< std::endl;
         }
     }
     else
     {
-        std::cout << "No mazes in the cache yet, let's create one" << std::endl;
+        std::cout <<BOLD <<RED<< "No mazes in the cache yet, let's create one"<<RESET << std::endl;
 
         std::cout << "Write name to create a new maze: ";
         std::string new_name;
@@ -69,9 +69,9 @@ void SolveMazeCommand::execute()
         generator.generate(maze_size, maze_size);
         Maze2d maze = generator.getMaze();
 
-        std::cout << "New maze name is: " << new_name << std::endl;
-        std::cout << "New maze size is: " << maze_size << std::endl;
-        std::cout << "New maze is: " << std::endl;
+        std::cout <<GREEN<< "New maze name is: " << new_name << RESET<<std::endl;
+        std::cout <<GREEN<< "New maze size is: " << maze_size <<RESET <<std::endl;
+        std::cout <<GREEN<< "New maze is: " << RESET <<std::endl;
         maze.print();
 
         mazes_[new_name] = maze;
@@ -81,18 +81,18 @@ void SolveMazeCommand::execute()
         std::cout << "Please choose an algorithm from the list below: ";
         std::string algo;
         std::cin >> algo;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
-        std::cout << "algo is: " << algo << endl;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout <<MAGENTA<< "algo is: " << algo << endl;
         std::cout << "sending to modal solve maze" << endl;
         try
         {
             model_->solveMaze(new_name, algo);
-            std::cout << "solved maze!" << endl;
-            std::cout << "Solution for maze " << new_name << " is:" << std::endl;
-            std::cout << "getting solution from model" << endl;
+            std::cout << GREEN <<"solved maze!" << endl;
+            std::cout << "Solution for maze " << new_name << " is:" << endl;
+            std::cout << "getting solution from model" << RESET <<endl;
             Solution<std::pair<int, int>> *solut;
             solut = model_->getSolution(new_name);
-            std::cout << "got solution from modal" << endl;
+            std::cout <<GREEN<< "got solution from modal" <<RESET<< endl;
             view_->displaySolution(*solut);
         }
         catch (const std::exception &e)

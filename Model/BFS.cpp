@@ -1,5 +1,4 @@
 
-#include "BFS.h"
 #include <iostream>
 #include <queue>
 #include <chrono>
@@ -39,26 +38,19 @@ public:
     }
     virtual void checkEfficiency(Maze2dSearchable &mazing) override
     {
-        // ... Your efficiency checking implementation here ...
-        // Record start time
         std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now();
 
-        // Run the BFS search
         mazing.BFS();
 
         Solution<T> *solution = mazing.getSolution();
 
         std::cout << "BFS Efficiency Check:" << std::endl;
         std::cout << "Number of explored nodes: " << solution->getNumOfEvaluatedNodes() << std::endl;
-        // Record end time
         std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
 
-        // Calculate the time taken
         std::chrono::duration<double> timeTaken = std::chrono::duration_cast<std::chrono::duration<double>>(endTime - startTime);
 
         std::cout << "Time taken: " << timeTaken.count() << " seconds" << std::endl;
-
-        // Additional efficiency analysis or comparisons can be added here
     }
 
 private:
