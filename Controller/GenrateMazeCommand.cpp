@@ -14,8 +14,8 @@ void GenerateMazeCommand::execute()
     std::cout <<MAGENTA<< "Enter the size of the maze: "<<RESET;
     try
     {
-        std::cin >> size_;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
+        // std::cin >> size_;
+        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character
         while (!(std::cin >> size_)) {
         // Clear the input stream and ignore any remaining characters
         std::cin.clear();
