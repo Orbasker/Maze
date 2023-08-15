@@ -165,9 +165,6 @@ void testInputValidation() {
 // Test 5: Performance Test
 void testPerformance() {
     std::cout << "Test 5: Performance Test" << std::endl;
-    // Add the performance testing code here
-    // Measure the time taken to generate mazes of various sizes and compare the performance of different algorithms
-    // Define the sizes of the mazes to test
     std::vector<int> mazeSizes = {10, 50, 100, 500, 1000};
 
     // Measure the time taken for each maze size using SimpleMaze2dGenerator

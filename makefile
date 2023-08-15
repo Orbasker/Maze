@@ -63,12 +63,6 @@ Model.o: Model.h Model.cpp
 View.o: View.h View.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c View.cpp
 
-
-# Add compilation rules for other classes if present
-# For example:
-# Searchable.o: Searchable.cpp Searchable.h
-#	$(CC) $(CFLAGS) $(INCLUDES) -c Searchable.cpp
-
 run: main
 	./main
 
