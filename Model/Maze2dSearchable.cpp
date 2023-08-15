@@ -1,3 +1,5 @@
+// Or Basker   316388743
+// Nave Maymon 318887965
 
 #include "Maze2dSearchable.h"
 Maze2dSearchable::Maze2dSearchable(const Maze2d &maze) : maze_(maze)

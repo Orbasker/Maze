@@ -1,3 +1,6 @@
+// Or Basker   316388743
+// Nave Maymon 318887965
+
 #include "SimpleMaze2dGenerator.h"
 #include <cstdlib> 
 #include <ctime>   

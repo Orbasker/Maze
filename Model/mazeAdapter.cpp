@@ -1,3 +1,6 @@
+// Or Basker   316388743
+// Nave Maymon 318887965
+
 #include "mazeAdapter.h"
 
 MazeAdapter::MazeAdapter(Maze2d& maze) : maze_(maze) {

@@ -1,3 +1,6 @@
+// Or Basker   316388743
+// Nave Maymon 318887965
+
 #include "Solution.cpp"
 #include "Maze2dSearchable.h"
 #include "maze2d.h"

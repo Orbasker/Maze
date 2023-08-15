@@ -1,3 +1,6 @@
+// Or Basker   316388743
+// Nave Maymon 318887965
+
 #include "maze2d.h"
 #include <iostream>
 #include <fstream>
